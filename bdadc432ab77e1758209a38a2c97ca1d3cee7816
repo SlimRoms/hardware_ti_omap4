@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_dbe1cb9b",
+        "filename": "camera/OMXCameraAdapter/OMXCapabilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1885,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2015-11-15T23:15:16Z",
+      "side": 1,
+      "message": "need to be removed too",
+      "range": {
+        "startLine": 1885,
+        "startChar": 0,
+        "endLine": 1885,
+        "endChar": 5
+      },
+      "revId": "bdadc432ab77e1758209a38a2c97ca1d3cee7816",
+      "serverId": "f8201d64-d729-4630-b91d-5f8be02869f0",
+      "unresolved": false
+    }
+  ]
+}
