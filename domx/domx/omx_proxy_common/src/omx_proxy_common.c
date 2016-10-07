@@ -1488,13 +1488,11 @@ OMX_ERRORTYPE __PROXY_GetParameter(OMX_IN OMX_HANDLETYPE hComponent,
 		     }
 		     break;
 #endif
-
 #ifdef ANDROID_API_MM_OR_LATER
 		case OMX_IndexParamConsumerUsageBits:
 			eError = OMX_ErrorNotImplemented;
 			goto EXIT;
 #endif
-
 		default:
 		{
 #ifdef USE_ION
