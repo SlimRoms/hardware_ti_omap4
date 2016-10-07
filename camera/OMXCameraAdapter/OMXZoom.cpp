@@ -98,7 +98,7 @@ status_t OMXCameraAdapter::doZoom(int index)
         ret = -EINVAL;
         }
 
-    if (mPreviousZoomIndx == (unsigned int)index )
+    if (mPreviousZoomIndx == index )
         {
         return NO_ERROR;
         }
