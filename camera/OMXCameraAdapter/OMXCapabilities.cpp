@@ -1646,10 +1646,10 @@ status_t OMXCameraAdapter::insertFacing(CameraProperties::Properties* params, OM
     memset(supported, '\0', sizeof(supported));
 
 #ifdef CAMERAHAL_TUNA
-    if(caps.tSenMounting.nSenId == SENSORID_S5K4E1GA) {
-        i = 0;
+    if (caps.tSenMounting.nSenId == SENSORID_S5K4E1GA) {
+        i = 0; // FACING_BACK
     } else {
-        i = 1;
+        i = 1; // FACING_FRONT
     }
 #else
     for (i = 0; i < ARRAY_SIZE(mFacing); i++) {
@@ -1880,8 +1880,11 @@ status_t OMXCameraAdapter::insertGBCESupported(CameraProperties::Properties* par
                     android::CameraParameters::TRUE);
     } else
 #endif
+    {
+
         params->set(CameraProperties::SUPPORTED_GBCE,
                     android::CameraParameters::FALSE);
+    }
 
     LOG_FUNCTION_NAME_EXIT;
 
@@ -2041,13 +2044,6 @@ status_t OMXCameraAdapter::insertDefaults(CameraProperties::Properties* params, 
     params->set(CameraProperties::MAX_FD_SW_FACES, DEFAULT_MAX_FD_SW_FACES);
     params->set(CameraProperties::AUTO_EXPOSURE_LOCK, DEFAULT_AE_LOCK);
     params->set(CameraProperties::AUTO_WHITEBALANCE_LOCK, DEFAULT_AWB_LOCK);
-#ifdef CAMERAHAL_TUNA
-    if (caps.tSenMounting.nSenId == SENSORID_S5K4E1GA) {
-        params->set(CameraProperties::FOCAL_LENGTH, DEFAULT_FOCAL_LENGTH_PRIMARY);
-    } else {
-        params->set(CameraProperties::FOCAL_LENGTH, DEFAULT_FOCAL_LENGTH_SECONDARY);
-    }
-#endif
     params->set(CameraProperties::HOR_ANGLE, DEFAULT_HOR_ANGLE);
     params->set(CameraProperties::VER_ANGLE, DEFAULT_VER_ANGLE);
     params->set(CameraProperties::VIDEO_SIZE, DEFAULT_VIDEO_SIZE);
@@ -2560,9 +2556,13 @@ status_t OMXCameraAdapter::getCaps(const int sensorId, CameraProperties::Propert
 #endif
 
 #ifdef CAMERAHAL_TUNA
-    // we support video snapshots
-    // but don't advertise it
+    // missing camera caps
     caps->bStillCapDuringVideoSupported = OMX_TRUE;
+    if (caps->tSenMounting.nSenId == SENSORID_S5K4E1GA) {
+        caps->nFocalLength = 343; // DEFAULT_FOCAL_LENGTH_PRIMARY
+    } else {
+        caps->nFocalLength = 195; // DEFAULT_FOCAL_LENGTH_SECONDARY
+    }
 #endif
 
 #ifdef CAMERAHAL_DEBUG

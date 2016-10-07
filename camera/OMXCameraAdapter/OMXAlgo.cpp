@@ -744,7 +744,6 @@ status_t OMXCameraAdapter::setCaptureMode(OMXCameraAdapter::CaptureMode mode)
         }
 #endif
 
-
         if( NO_ERROR == ret )
             {
             //Configure CAC
