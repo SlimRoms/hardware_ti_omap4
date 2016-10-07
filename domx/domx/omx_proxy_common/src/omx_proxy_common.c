@@ -1495,6 +1495,7 @@ OMX_ERRORTYPE __PROXY_GetParameter(OMX_IN OMX_HANDLETYPE hComponent,
 			goto EXIT;
 #endif
 
+#endif
 		default:
 		{
 #ifdef USE_ION
