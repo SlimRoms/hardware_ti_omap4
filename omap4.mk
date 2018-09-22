@@ -47,8 +47,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.bq.gpu_to_cpu_unsupported=1
 
-# affects lock screen ColorFader and ensures release of /dev/pvrsrvkm GPU ressources
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+# Ensure release of EGL buffer in the ColorFade class
+PRODUCT_PROPERTY_OVERRIDES += \
     ro.egl.destroy_after_detach=true
 
 $(call inherit-product, hardware/ti/omap4/common.mk)
